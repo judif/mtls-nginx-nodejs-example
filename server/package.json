@@ -1,0 +1,15 @@
+{
+  "name": "mtls-basic",
+  "version": "1.0.0",
+  "description": "Basic node server using mTLS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "author": "Judith Freiberger",
+  "license": "ISC"
+}

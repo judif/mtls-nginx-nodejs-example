@@ -13,8 +13,8 @@ services:
       - "8090:8090"
     volumes:
       - ./nginx/env/local/nginx.conf:/etc/nginx/conf.d/default.conf
-      - ./certs_1/server.crt:/var/lib/runtime_cert/server.crt
-      - ./certs_1/server.key:/var/lib/runtime_cert/server.key
-      - ./certs_1/ca.crt:/etc/nginx/client_certs/ca.crt
+      - ./certs/server.crt:/var/lib/runtime_cert/server.crt
+      - ./certs/server.key:/var/lib/runtime_cert/server.key
+      - ./certs/ca.crt:/etc/nginx/client_certs/ca.crt
 
 

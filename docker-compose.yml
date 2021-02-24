@@ -2,7 +2,9 @@ version: "3"
 
 services:
   node_basic:
-    build: ./server
+    build:
+      context: .
+      dockerfile: ./server/Dockerfile
     ports:
       - 3000:3000
     working_dir: /usr/src/app
@@ -10,9 +12,10 @@ services:
   nginx:
     image: nginx
     ports:
-      - "8090:8090"
+      - "443:443"
+      - "80:80"
     volumes:
-      - ./nginx/env/local/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/env/public/nginx.conf:/etc/nginx/conf.d/default.conf
       - ./certs/server.crt:/var/lib/runtime_cert/server.crt
       - ./certs/server.key:/var/lib/runtime_cert/server.key
       - ./certs/ca.crt:/etc/nginx/client_certs/ca.crt

@@ -13,7 +13,7 @@ RUN npm install
 # RUN npm ci --only=production
 
 # Bundle app source
-COPY server/ .
+COPY ./server/ .
 
 EXPOSE 3000
 CMD ["npm", "run", "server"]

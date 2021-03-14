@@ -1,23 +1,25 @@
 #!/usr/bin/env bash
 
+CERT_DIR="./certs"
+CA_NAME="mtls_ca"
+
 echo -n "Enter path for certificates directory and press [ENTER]: "
-read CERT_DIR
+read NEW_CERT_DIR
 echo -n "Enter certificate authority (CA) name and press [ENTER]: "
-read CA_NAME
+read NEW_CA_NAME
 echo
 
-if [ -z "$CERT_DIR" ]
+if [ -n "$NEW_CERT_DIR" ]
 then
-      echo "Please provide certificate directory"
-      exit 1
+      CERT_DIR=$NEW_CERT_DIR
 fi
 
-if [ -z "$CA_NAME" ]
+if [ -n "$NEW_CA_NAME" ]
 then
-      echo "Please provide CA name"
-      exit 1
+      CA_NAME=$NEW_CA_NAME
 fi
 
+echo $CERT_DIR
 
 if [ -d "$CERT_DIR" ]; then
   read -p "Are you sure you want overwrite certificates (if exist)? (y) " -n 1 -r

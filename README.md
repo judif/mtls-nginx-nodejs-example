@@ -4,11 +4,13 @@ A simple example on how to do client authentication with certificates - mutual T
 
 ## Installation
 
-Requiring tools as [OpenSSL](https://www.openssl.org/), [Docker](https://www.docker.com/) and [Node.js](https://nodejs.org/en/) on the machine running the project.
+Required tools as [OpenSSL](https://www.openssl.org/), [Docker](https://www.docker.com/) and [Node.js](https://nodejs.org/en/) need to be installed on the machine running the project.
 
 ### Create Certificates
 
-Before running the example create `certificate authority (CA)`, `server` and `client` certificates with the `create_certs.sh` script. A detailed description of each step can be found within the script.
+Before running the example create `certificate authority (CA)`, `server` and `client` certificates with the `create_certs.sh` script. 
+
+A detailed description of each step can be found within the script.
 
 ```shell
 ./script/create_certs.sh
@@ -20,6 +22,7 @@ Enter certificate authority (CA) name (default: mtls_ca): my_ca
 ```
 
 With the above example a directory `certs` will be created in the root directory and puts the following certificates in there:
+
 ```
 - Certificate Authority
     - ca.crt
@@ -38,15 +41,16 @@ With the above example a directory `certs` will be created in the root directory
 
 ## Usage
 
-Before starting the application notice the comments below and adjust the code if necessary.
+When starting the application notice the comments below and adjust the code if necessary.
 
 ### Prerequisites
 
 Make sure `docker` and `docker-compose` are up and running. 
 
-Ports `3000`, `80` and `443` are not in use already. In case the ports are used by another application, adapt the configuration in [./docker-compose.yml](https://github.com/judif/mtls-basic/blob/main/docker-compose.yml), [./nginx-server/proxy.conf](https://github.com/judif/mtls-basic/blob/main/nginx-server/proxy.conf#L2) and [./node-server/server.js](https://github.com/judif/mtls-basic/blob/main/nginx-server/proxy.conf#L2).
+Also be aware that ports `3000`, `80` and `443` are not occupied already. In case the ports are used by another application, adapt the configuration in [./docker-compose.yml](https://github.com/judif/mtls-basic/blob/main/docker-compose.yml), [./nginx-server/proxy.conf](https://github.com/judif/mtls-basic/blob/main/nginx-server/proxy.conf#L2) and [./node-server/server.js](https://github.com/judif/mtls-basic/blob/main/nginx-server/proxy.conf#L2).
 
 If there has been chosen a certificates directory different to the default path `./certs`, please adjust the path inside `./docker-compose.yml`.
+
 ```dockerfile
 ...
     volumes:
@@ -58,17 +62,17 @@ If there has been chosen a certificates directory different to the default path 
 
 ### Deployment 
 
-After considering the stops above - let's get ready to spin up the servers.
+All requirements are met? - Let's get ready to spin up the servers with
 
 ```shell
 docker-compose up --build 
 ```
 
-Both servers `NGINX` and the `Node JS Express` server are now available.
+Both servers `NGINX` and the `Node JS Express` server should be available.
 
 ### Testing
 
-The application can now be tested with an appropriate tool of any choice. Below examples are executed with `cURL`.
+In order to verify the server is working correctly start testing with an appropriate tool of any choice. Below examples are executed with `cURL`.
 
 ```shell
 curl https://localhost \
@@ -90,7 +94,7 @@ curl https://localhost:3000 \
 # successfull response with message should be returned
 ```
 
-While testing some errors can occur...
+Of course - nobody is perfect. While testing some errors can occur...
 
 #### Potential sources of errors
 

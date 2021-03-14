@@ -4,7 +4,7 @@ A simple example on how to do client authentication with certificates - mutual T
 
 ## Installation
 
-Consider tools like [OpenSSL](https://www.openssl.org/), [Docker](https://www.docker.com/) and [Node.js](https://nodejs.org/en/) needs to be installed on the machine running the project.
+Requiring tools as [OpenSSL](https://www.openssl.org/), [Docker](https://www.docker.com/) and [Node.js](https://nodejs.org/en/) on the machine running the project.
 
 ### Create Certificates
 
@@ -38,13 +38,15 @@ With the above example a directory `certs` will be created in the root directory
 
 ## Usage
 
-Before running the application consider the following section. 
+Before starting the application notice the comments below and adjust the code if necessary.
 
 ### Prerequisites
 
-Make sure `docker` and `docker-compose` are up and running and ports `3000`, `80` and `443` are not in use already. In case the ports are used by another application, adapt the ports in [./docker-compose.yml](https://github.com/judif/mtls-basic/blob/main/docker-compose.yml), [./nginx-server/proxy.conf](https://github.com/judif/mtls-basic/blob/main/nginx-server/proxy.conf#L2) and [./node-server/server.js](https://github.com/judif/mtls-basic/blob/main/nginx-server/proxy.conf#L2).
+Make sure `docker` and `docker-compose` are up and running. 
 
-If there has been chosen a certificates directory different to the default path `./certs`, please also make sure the path will be adapted inside `./docker-compose.yml`.
+Ports `3000`, `80` and `443` are not in use already. In case the ports are used by another application, adapt the configuration in [./docker-compose.yml](https://github.com/judif/mtls-basic/blob/main/docker-compose.yml), [./nginx-server/proxy.conf](https://github.com/judif/mtls-basic/blob/main/nginx-server/proxy.conf#L2) and [./node-server/server.js](https://github.com/judif/mtls-basic/blob/main/nginx-server/proxy.conf#L2).
+
+If there has been chosen a certificates directory different to the default path `./certs`, please adjust the path inside `./docker-compose.yml`.
 ```dockerfile
 ...
     volumes:

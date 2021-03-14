@@ -1,6 +1,6 @@
 /certs/
 /certs/
 
-/server/node_modules/
+/node-server/node_modules/
 
 /.idea/

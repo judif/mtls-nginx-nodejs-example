@@ -3,9 +3,9 @@
 CERT_DIR="./certs"
 CA_NAME="mtls_ca"
 
-echo -n "Enter path for certificates directory and press [ENTER]: "
+echo -n "Enter path for certificates directory (default: certs): "
 read NEW_CERT_DIR
-echo -n "Enter certificate authority (CA) name and press [ENTER]: "
+echo -n "Enter certificate authority (CA) name (default: mtls_ca): "
 read NEW_CA_NAME
 echo
 

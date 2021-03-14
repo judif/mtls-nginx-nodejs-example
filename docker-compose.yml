@@ -18,5 +18,3 @@ services:
       - ./certs/server.crt:/etc/ssl/server.crt
       - ./certs/server.key:/etc/ssl/server.key
       - ./certs/ca.crt:/etc/nginx/client_certs/ca.crt
-
-

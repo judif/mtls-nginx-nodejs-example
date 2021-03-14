@@ -54,7 +54,7 @@ If there has been chosen a certificates directory different to the default path 
 ...
 ```
 
-### Installing 
+### Deployment 
 
 After considering the stops above - let's get ready to spin up the servers.
 
@@ -62,4 +62,60 @@ After considering the stops above - let's get ready to spin up the servers.
 docker-compose up --build 
 ```
 
-Both servers `NGINX` and the `Node JS Express` server are now available. 
+Both servers `NGINX` and the `Node JS Express` server are now available.
+
+### Testing
+
+The application can now be tested with an appropriate tool of any choice. Below examples are executed with `cURL`.
+
+```shell
+curl https://localhost \
+  --cacert certs/ca.crt \
+  --key certs/client.key \
+  --cert certs/client.crt 
+
+# successfull response with message should be returned
+```
+
+It depends on how the machine you're testing with is set up. Not just `NGINX` can be called also the `Node JS` application can be directly accessed with client certificates. 
+
+```shell
+curl https://localhost:3000 \
+  --cacert certs/ca.crt \
+  --key certs/client.key \
+  --cert certs/client.crt 
+
+# successfull response with message should be returned
+```
+
+While testing some errors can occur...
+
+#### Potential sources of errors
+
+A list of potential errors ...
+
+##### Error - Certificate Authority (CA) not known
+
+```shell
+curl: (60) SSL certificate problem: unable to get local issuer certificate
+```
+
+Check if `ca.crt` file is provided and the correct one hase been chosen.
+
+##### Error - Missing client certificate and key
+
+```shell
+<html>
+<head><title>403 Forbidden</title></head>
+<body>
+<center><h1>403 Forbidden</h1></center>
+<hr><center>nginx/1.17.10</center>
+</body>
+</html>
+```
+
+Make sure the command consists of all necessary client certificates needed to authenticate with the server.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/judif/mtls-basic/blob/main/LICENSE.md) file for details

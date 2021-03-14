@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  node_basic:
+    build:
+      context: server
+    ports:
+      - 3000:3000
+    working_dir: /usr/src/app
+
+  nginx:
+    image: nginx
+    ports:
+      - "443:443"
+      - "80:80"
+    volumes:
+      - ./nginx/proxy.conf:/etc/nginx/conf.d/default.conf
+      - ./certs/server.crt:/etc/ssl/server.crt
+      - ./certs/server.key:/etc/ssl/server.key
+      - ./certs/ca.crt:/etc/nginx/client_certs/ca.crt
+
+

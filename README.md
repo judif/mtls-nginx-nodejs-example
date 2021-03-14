@@ -65,14 +65,22 @@ If there has been chosen a certificates directory different to the default path 
 All requirements are met? - Let's get ready to spin up the servers with
 
 ```shell
+docker-compose build
+
+docker-compose up
+```
+
+Alternatively combine both commands into one:
+
+```shell
 docker-compose up --build 
 ```
 
-Both servers `NGINX` and the `Node JS Express` server should be available.
+Both servers `NGINX` and the `Node JS Express` server should be available then.
 
 ### Testing
 
-In order to verify the server is working correctly start testing with an appropriate tool of any choice. Below examples are executed with `cURL`.
+In order to verify the server is working correctly, start testing with an appropriate tool of any choice. Below examples are executed with `cURL`.
 
 ```shell
 curl https://localhost \
@@ -83,7 +91,7 @@ curl https://localhost \
 # successfull response with message should be returned
 ```
 
-It depends on how the machine you're testing with is set up. Not just `NGINX` can be called also the `Node JS` application can be directly accessed with client certificates. 
+It depends on how the machine you're testing with is set up: not just `NGINX` can be called also the `Node JS` application can be directly accessed with client certificates. 
 
 ```shell
 curl https://localhost:3000 \
@@ -98,7 +106,7 @@ Of course - nobody is perfect. While testing some errors can occur...
 
 #### Potential sources of errors
 
-A list of potential errors ...
+A list of errors ...
 
 ##### Error - Certificate Authority (CA) not known
 

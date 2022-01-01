@@ -13,7 +13,7 @@ Before running the example create `certificate authority (CA)`, `server` and `cl
 A detailed description of each step can be found within the script.
 
 ```shell
-./script/create_certs.sh
+./scripts/create_certs.sh
 
 # Output
 Enter path for certificates directory (default: certs): ./certs

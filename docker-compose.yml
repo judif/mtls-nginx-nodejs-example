@@ -7,7 +7,11 @@ services:
     ports:
       - 3000:3000
     working_dir: /usr/src/app
-
+    volumes:
+      - ./certs/server.crt:/usr/src/app/certs/server.crt
+      - ./certs/server.key:/usr/src/app/certs/server.key
+      - ./certs/ca.crt:/usr/src/app/certs/ca.crt
+      
   nginx:
     image: nginx
     ports:
